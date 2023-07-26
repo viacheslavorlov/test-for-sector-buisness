@@ -1,0 +1,17 @@
+:root {
+    font-family: Roboto, sans-serif;
+
+    /* Переменные*/
+    --dark-grey: #474955;
+    --light-grey: #E3E6EC;
+    --white-color: #FFF;
+    --placeholder-color: #B2B7BF;
+    --green-color: #7EBC3C;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+

@@ -1,0 +1,14 @@
+.search {
+    padding: 18px 26px;
+    width: 100%;
+    height: 52px;
+    background-color: var(--dark-grey);
+    color: var(--white-color);
+}
+
+.img {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
