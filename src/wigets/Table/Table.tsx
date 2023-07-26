@@ -52,15 +52,15 @@ export const Table = memo((props: TableProps) => {
                 <tr className={cls.tr}>
                     <th onClick={() => filterData(posts, 'id')} className={cls.id}>
                         <div>ID</div>
-                        <img src={arrow} alt="\/"/>
+                        <img className={cls.arrow} src={arrow} alt="\/"/>
                     </th>
                     <th onClick={() => filterData(posts, 'title')} className={cls.title}>
                         <div>Заголовок</div>
-                        <img src={arrow} alt="\/"/>
+                        <img className={cls.arrow} src={arrow} alt="\/"/>
                     </th>
                     <th onClick={() => filterData(posts, 'body')} className={cls.body}>
                         <div>Описание</div>
-                        <img src={arrow} alt="\/"/>
+                        <img className={cls.arrow} src={arrow} alt="\/"/>
                     </th>
                 </tr>
                 </thead>
