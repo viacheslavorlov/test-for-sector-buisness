@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
 interface SearchSliceSchema {
     value: string
@@ -8,8 +8,8 @@ const initialState: SearchSliceSchema = {
     value: '',
 };
 
-export const searchsliceSlice = createSlice({
-    name: 'searchslice',
+export const searchSliceSlice = createSlice({
+    name: 'searchSlice',
     initialState,
     reducers: {
         setSearchValue: (state, action) => {
@@ -19,4 +19,4 @@ export const searchsliceSlice = createSlice({
 
 });
 
-export const { reducer: searchSliceReducer, actions: searchSliceActions } = searchsliceSlice;
+export const { reducer: searchSliceReducer, actions: searchSliceActions } = searchSliceSlice;

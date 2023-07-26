@@ -12,7 +12,7 @@ function App() {
     return (
         <div className={cls.app}>
             <Search className={cls.search}/>
-            {!isLoading && <Table className={cls.table} data={data}/>}
+            {!isLoading && data && <Table className={cls.table} posts={data}/>}
             <Pagination/>
         </div>
     );

@@ -1,2 +1,5 @@
-export {Post} from './ui/Post'
-export type {PostInterface} from './model/postInterface'
+import {PostInterface} from './model/postInterface';
+import {Post} from './ui/Post';
+
+export {Post}
+export type {PostInterface}

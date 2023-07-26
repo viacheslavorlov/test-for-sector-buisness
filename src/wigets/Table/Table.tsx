@@ -9,15 +9,15 @@ import cls from './Table.module.css';
 
 interface TableProps {
     className?: string;
-    data: PostInterface[];
+    posts: PostInterface[];
 }
 
 export const Table = memo((props: TableProps) => {
-    const {className, data} = props;
+    const {className, posts} = props;
     const currentPage = useSelector(currentPageSelector);
     const searchValue = useSelector(searchValueSelector);
-    const [filteredPosts, setFilteredPosts] = useState<PostInterface[]>(data);
-    const filterData = useCallback((arr: PostInterface[], prop) => {
+    const [filteredPosts, setFilteredPosts] = useState<PostInterface[]>(posts);
+    const filterData = useCallback((arr: PostInterface[], prop: keyof PostInterface) => {
         const sortedData = arr.slice().sort((item1, item2) => {
             if (item1[prop] > item2[prop]) {
                 return 1;
@@ -27,7 +27,7 @@ export const Table = memo((props: TableProps) => {
             }
             return 0;
         });
-        setFilteredPosts(searchData(searchValue,sortedData));
+        setFilteredPosts(searchData(searchValue, sortedData));
     }, [searchValue]);
 
     const searchData = (value: string, arr: PostInterface[]) => {
@@ -36,36 +36,36 @@ export const Table = memo((props: TableProps) => {
                 item => item.id === Number(value) || item.title.match(value) || item.body.match(value)
             );
         } else {
-            return arr
+            return arr;
         }
 
     };
 
     useEffect(() => {
-        filterData(data, 'id');
-    }, [currentPage, data, filterData]);
+        filterData(posts, 'id');
+    }, [currentPage, posts, filterData]);
 
     return (
         <main className={cls.main}>
             <table className={classNames(cls.table, className)}>
                 <thead>
                 <tr className={cls.tr}>
-                    <th onClick={() => filterData(data, 'id')} className={cls.id}>
+                    <th onClick={() => filterData(posts, 'id')} className={cls.id}>
                         <div>ID</div>
                         <img src={arrow} alt="\/"/>
                     </th>
-                    <th onClick={() => filterData(data, 'title')} className={cls.title}>
+                    <th onClick={() => filterData(posts, 'title')} className={cls.title}>
                         <div>Заголовок</div>
                         <img src={arrow} alt="\/"/>
                     </th>
-                    <th onClick={() => filterData(data, 'body')} className={cls.body}>
+                    <th onClick={() => filterData(posts, 'body')} className={cls.body}>
                         <div>Описание</div>
                         <img src={arrow} alt="\/"/>
                     </th>
                 </tr>
                 </thead>
                 <tbody className={cls.tbody}>
-                {filteredPosts && filteredPosts.map((post) => (
+                {filteredPosts && filteredPosts.map((post: PostInterface) => (
                     <Post key={post.id} post={post}/>
                 ))}
                 </tbody>

@@ -12,9 +12,9 @@ export const Pagination = memo(() => {
     const pages: { page: number, active: boolean }[] = [];
     const dispatch = useAppDispatch();
 
-    const updateURL = (page) => {
+    const updateURL = (page: number) => {
         const newURL = new URL(window.location.href);
-        newURL.searchParams.set('page', page);
+        newURL.searchParams.set('page', String(page));
         window.history.pushState({ path: newURL.href }, '', newURL.href);
     };
 
